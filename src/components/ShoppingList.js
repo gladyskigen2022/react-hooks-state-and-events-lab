@@ -7,28 +7,28 @@ function ShoppingList({ items }) {
   function handleFilter(event) {
     setSelectedCategory(event.target.value);
   }
-  const itemsDisplayed =items.filter(item => {
+  const itemsDisplayed =items.filter((item) => {
     if (selectedCategory === "All") {
       return true;
     } else {
       return item.category === selectedCategory;
     }
   })
+  const itemList = itemsDisplayed.map(item => {
+    return <Item key={item.id} name={item.name} category={item.category} />
+  })
 
   return (
     <div className="ShoppingList">
       <div className="Filter">
-        <select onChange={handleFilter} name="filter">
+        <select name="filter" onChange={handleFilter} >
           <option value="All">Filter by category</option>
           <option value="Produce">Produce</option>
           <option value="Dairy">Dairy</option>
           <option value="Dessert">Dessert</option>
         </select>
       </div>
-      <ul className="Items">
-        {itemsDisplayed.map((item) => (
-          <Item key={item.id} name={item.name} category={item.category} />
-        ))}
+      <ul className="Items">{itemList}    
       </ul>
     </div>
   );
