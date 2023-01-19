@@ -10,11 +10,13 @@ function Item({ name, category }) {
  // (inTheCart) =>
 
   return (
-    <li className={inTheCart ? "in-Cart": ""}>
+    <li className="in-Cart"> 
+    {/* the item is in the cart */}
       <span>{name}</span>
       <span className="category">{category}</span>
       <button className="add" onClick={handleInCart} >"Remove from Cart": "Add to Cart" </button>
     </li>
+    
   );
 }
 
